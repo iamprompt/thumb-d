@@ -1,9 +1,10 @@
 import { NextPage } from 'next'
+import Layout from '@/layouts'
 
 const IndexPage: NextPage = () => (
-  <div>
+  <Layout>
     <h1>Hello Next.js 👋</h1>
-  </div>
+  </Layout>
 )
 
 export default IndexPage
