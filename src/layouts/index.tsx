@@ -1,9 +1,19 @@
 import { NextPage } from 'next'
+import Head from 'next/head'
+import { ReactNode } from 'react'
 
-const IndexLayouts: NextPage = () => {
+type LayoutProps = {
+  title: string
+  children: ReactNode
+}
+
+const IndexLayouts: NextPage = ({ title = 'Thumb D', children }: LayoutProps) => {
   return (
     <>
-      <div></div>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      {children}
     </>
   )
 }
