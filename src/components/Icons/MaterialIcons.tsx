@@ -10,7 +10,13 @@ type Props = {
 const MaterialIcons = ({ icon, type = 'Filled', className = '' }: Props) => {
   return (
     <>
-      <span className={`${type === 'Rounded' ? 'material-icons-round' : 'material-icons'}${className}`}>{icon}</span>
+      <span
+        className={`${type === 'Rounded' ? 'material-icons-round' : 'material-icons'}${
+          className !== '' && ` ${className}`
+        }`}
+      >
+        {icon}
+      </span>
     </>
   )
 }
