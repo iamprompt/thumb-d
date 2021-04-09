@@ -4,4 +4,13 @@ module.exports = {
   },
   poweredByHeader: false,
   generateEtags: false,
+  // webpack: (config, { isServer }) => {
+  //   if (!isServer) {
+  //     config.resolve = {
+  //       fallback: { fs: 'empty', module: 'empty' },
+  //     }
+  //   }
+
+  //   return config
+  // },
 }
