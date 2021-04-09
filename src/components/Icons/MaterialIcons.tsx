@@ -7,7 +7,7 @@ type Props = {
   className?: string
 }
 
-const MaterialIcons = ({ icon, type = 'Filled', className = '' }: Props) => {
+export const MaterialIcons = ({ icon, type = 'Filled', className = '' }: Props) => {
   return (
     <>
       <span

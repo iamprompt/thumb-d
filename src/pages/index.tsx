@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Layout from '@/layouts'
 
-import MaterialIcons from '@/components/Icons/MaterialIcons'
+import { MaterialIcons } from '@/components/Icons/MaterialIcons'
 
 const IndexPage: NextPage = () => (
   <Layout>
