@@ -3,3 +3,7 @@ node_modules/
 
 # Next JS created folder
 .next/
+
+# Environment File
+.env.*
+!.env.sample
