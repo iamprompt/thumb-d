@@ -22,7 +22,7 @@ export const FooterNav = () => {
             <NavItem>
               <MaterialIcons
                 icon={item.icon}
-                className="!text-3xl bg-clip-text text-transparent bg-gradient-to-b from-red-600 to-yellow-400"
+                className="!text-3xl bg-clip-text text-transparent bg-gradient-to-b from-brand-orange-primary to-brand-orange-secondary"
               />
               <span className="sr-only">{item.title}</span>
             </NavItem>
