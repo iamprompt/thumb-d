@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import { Formik, Form, Field } from 'formik'
+
+import tw from 'twin.macro'
 
 import Layout from '@/layouts'
 
 import { MaterialIcons } from '@/components/Icons'
+
+const Header = tw.div`font-bold text-5xl md:text-7xl space-y-3 w-full mb-5`
+const FormContainer = tw.div`flex flex-col max-w-xl mx-auto items-center justify-center min-h-screen p-5`
 
 type LoginForm = {
   email: string
@@ -18,11 +23,11 @@ const LoginPage = () => {
 
   return (
     <Layout title="Login">
-      <div className="flex flex-col max-w-xl mx-auto items-center justify-center min-h-screen p-5">
-        <header className="font-bold text-5xl md:text-7xl space-y-3 w-full mb-5">
+      <FormContainer>
+        <Header>
           <h1>Hello.</h1>
           <h1>Welcome Back</h1>
-        </header>
+        </Header>
         <Formik
           initialValues={initialLoginValues}
           onSubmit={(values, actions) => {
@@ -75,7 +80,7 @@ const LoginPage = () => {
             </div>
           </Form>
         </Formik>
-      </div>
+      </FormContainer>
     </Layout>
   )
 }

@@ -12,7 +12,7 @@ export const MaterialIcons = ({ icon, type = 'Filled', className = '' }: Props) 
     <>
       <span
         className={`${type === 'Rounded' ? 'material-icons-round' : 'material-icons'}${
-          className !== '' && ` ${className}`
+          className === '' ? `` : ` ${className}`
         }`}
       >
         {icon}
