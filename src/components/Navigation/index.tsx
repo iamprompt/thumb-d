@@ -1,9 +1,36 @@
 import tw from 'twin.macro'
+import Link from 'next/link'
 
-const Box = tw.div`fixed bottom-0 w-full p-5 z-50`
+import { MaterialIcons } from '@/components/Icons'
+
+const BottomBox = tw.div`fixed bottom-0 w-full p-5 z-50`
+const NavBox = tw.div`w-full shadow-lg bg-white rounded-full grid grid-cols-3 max-w-screen-sm mx-auto`
+const NavItem = tw.div`flex flex-col items-center justify-center p-3 cursor-pointer`
+
+const NavItems = [
+  { title: 'Feed', href: '/', icon: 'article' },
+  { title: 'Explore', href: '/explore', icon: 'search' },
+  { title: 'Profile', href: '/me', icon: 'person' },
+]
 
 export const FooterNav = () => {
-  return <Box>ABV</Box>
+  return (
+    <BottomBox>
+      <NavBox>
+        {NavItems.map((item) => (
+          <Link href={item.href} key={item.title}>
+            <NavItem>
+              <MaterialIcons
+                icon={item.icon}
+                className="!text-3xl bg-clip-text text-transparent bg-gradient-to-b from-red-600 to-yellow-400"
+              />
+              <span className="sr-only">{item.title}</span>
+            </NavItem>
+          </Link>
+        ))}
+      </NavBox>
+    </BottomBox>
+  )
 }
 
 export default FooterNav
