@@ -11,13 +11,13 @@ type LayoutProps = {
 
 const IndexLayouts: NextPage<LayoutProps> = ({ title = 'Thumb D', children, nav = false }: LayoutProps) => {
   return (
-    <>
+    <div className="bg-gray-100 min-h-screen">
       <Head>
         <title>{title}</title>
       </Head>
       {children}
       {nav && <FooterNav />}
-    </>
+    </div>
   )
 }
 
