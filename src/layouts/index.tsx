@@ -6,7 +6,7 @@ import { ReactNode } from 'react'
 type LayoutProps = {
   title?: string
   children: ReactNode
-  nav: boolean
+  nav?: boolean
 }
 
 const IndexLayouts: NextPage<LayoutProps> = ({ title = 'Thumb D', children, nav = false }: LayoutProps) => {
