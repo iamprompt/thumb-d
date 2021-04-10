@@ -4,6 +4,9 @@ module.exports = {
   },
   poweredByHeader: false,
   generateEtags: false,
+  images: {
+    domains: ['firebasestorage.googleapis.com'],
+  },
   // webpack: (config, { isServer }) => {
   //   if (!isServer) {
   //     config.resolve = {
