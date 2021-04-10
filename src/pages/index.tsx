@@ -1,13 +1,19 @@
 import { NextPage } from 'next'
 
 import Layout from '@/layouts'
-import { MaterialIcons } from '@/components/Icons'
+
+import PostCard from '@/components/Post/PostCard'
+
+import { postData } from '../utils/mockData'
 
 const IndexPage: NextPage = () => {
   return (
     <Layout nav>
-      <h1>Hello Next.js 👋</h1>
-      <MaterialIcons icon="settings" className="!text-4xl" />
+      <div className="p-5 pb-24 max-w-screen-md mx-auto space-y-5">
+        {postData.map((p) => (
+          <PostCard key={p._id} d={p} />
+        ))}
+      </div>
     </Layout>
   )
 }
