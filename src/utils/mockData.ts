@@ -5,7 +5,8 @@ export const postData: postInterface[] = [
     _id: '42354',
     author: {
       name: 'Supakarn Laorattanakul',
-      imgUrl: '',
+      imgUrl:
+        'https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
     },
     datePosted: new Date('2021-03-01'),
     message:
@@ -17,7 +18,8 @@ export const postData: postInterface[] = [
         _id: '12355',
         author: {
           name: 'Supakarn Laorattanakul',
-          imgUrl: '',
+          imgUrl:
+            'https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
         },
         message:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

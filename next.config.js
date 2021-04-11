@@ -5,7 +5,7 @@ module.exports = {
   poweredByHeader: false,
   generateEtags: false,
   images: {
-    domains: ['firebasestorage.googleapis.com'],
+    domains: ['firebasestorage.googleapis.com', 'images.unsplash.com'],
   },
   // webpack: (config, { isServer }) => {
   //   if (!isServer) {

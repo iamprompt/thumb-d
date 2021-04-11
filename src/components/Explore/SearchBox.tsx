@@ -31,7 +31,10 @@ const SearchBox = ({ v, setV, placeHolder }: Props) => (
           value={v}
           className="appearance-none py-3 px-3 pr-10 w-full rounded-2xl border-none bg-white focus:bg-white shadow-md focus:shadow-lg focus:ring focus:ring-red-400"
         />
-        <button type="submit" className="absolute pt-3 text-lg focus:outline-none right-2">
+        <button
+          type="submit"
+          className="absolute pt-3 text-lg focus:outline-none right-2"
+        >
           <MaterialIcons
             icon="search"
             className="bg-clip-text text-transparent from-brand-orange-primary to-brand-orange-secondary bg-gradient-to-r"

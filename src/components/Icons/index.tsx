@@ -8,13 +8,18 @@ type Props = {
   onClick?: () => void
 }
 
-export const MaterialIcons = ({ icon, type = 'Filled', className = '', onClick }: Props) => {
+export const MaterialIcons = ({
+  icon,
+  type = 'Filled',
+  className = '',
+  onClick,
+}: Props) => {
   return (
     <>
       <span
-        className={`${type === 'Rounded' ? 'material-icons-round' : 'material-icons'}${
-          className === '' ? `` : ` ${className}`
-        }`}
+        className={`${
+          type === 'Rounded' ? 'material-icons-round' : 'material-icons'
+        }${className === '' ? `` : ` ${className}`}`}
         onClick={onClick}
       >
         {icon}

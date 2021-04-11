@@ -26,7 +26,8 @@ const Map = ({ d }: Props) => {
   const gMapDivRef = useRef<HTMLDivElement>(null)
   let map: google.maps.Map | undefined = undefined
 
-  const generateInfoWindow = (d: templeInterface) => renderToString(<TempleInfoWindow key={d._id} d={d} />)
+  const generateInfoWindow = (d: templeInterface) =>
+    renderToString(<TempleInfoWindow key={d._id} d={d} />)
 
   const placeMarkers = (data: templeInterface[]) => {
     const infoWindow: google.maps.InfoWindow = new google.maps.InfoWindow()

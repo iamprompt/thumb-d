@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { MaterialIcons } from '@/components/Icons'
 
 import { postInterface } from '~@types'
@@ -6,17 +8,18 @@ import { dayjs } from '@/utils'
 
 const PostCard = ({ d }: { d: postInterface }) => (
   <div className="flex flex-col bg-white shadow-xl rounded-lg mt-5">
-    <div className="flex flex-row pt-4 px-4">
-      <img
-        className="w-12 h-12 rounded-full object-cover mr-4 shadow"
-        src={
-          d.author.imgUrl ||
-          'https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
-        }
-        alt="avatar"
-      />
+    <div className="flex flex-row items-center pt-4 px-4 space-x-4">
+      <div className="mr-4 w-12 h-12">
+        <Image
+          src={d.author.imgUrl}
+          width={100}
+          height={100}
+          objectFit="cover"
+          className="rounded-full shadow"
+        />
+      </div>
       <div>
-        <div className="text-xl font-bold">{d.author.name}</div>
+        <div className="text-lg font-bold">{d.author.name}</div>
         <div className="text-xs">{dayjs(d.datePosted).fromNow()}</div>
       </div>
     </div>
@@ -24,19 +27,25 @@ const PostCard = ({ d }: { d: postInterface }) => (
       <p className="text-sm bg-white line-clamp-3">{d.message}</p>
     </div>
     {d.imgUrl && (
-      <div className="aspect-w-16 aspect-h-10">
-        <img src={d.imgUrl} alt="" className="object-cover" />
+      <div>
+        <Image
+          src={d.imgUrl}
+          width={100}
+          height={62.5}
+          layout="responsive"
+          objectFit="cover"
+        />
       </div>
     )}
     <div className="grid grid-cols-3 border-t bg-clip-text text-transparent bg-gradient-to-t from-[#F06129] to-[#FF9A3D]">
       <div className="flex p-1 items-center justify-center align-middle text-center border-r text-sm">
-        <span className="material-icons mr-1 text-sm">favorite</span> Sadhu
+        <MaterialIcons icon="favorite" className="mr-1 !text-sm" /> Sadhu
       </div>
       <div className="flex p-1 items-center justify-center align-middle text-center text-sm">
-        <span className="material-icons mr-1 text-sm">comment</span> Comment
+        <MaterialIcons icon="comment" className="mr-1 !text-sm" /> Comment
       </div>
       <div className="flex p-1 items-center justify-center align-middle text-center border-l text-sm">
-        <span className="material-icons mr-1 text-sm">share</span> Share
+        <MaterialIcons icon="share" className="mr-1 !text-sm" /> Share
       </div>
     </div>
     {d.comments?.map((cm) => (

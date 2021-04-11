@@ -12,7 +12,13 @@ const CardBodyContainer = tw.div`pt-4 px-4 gap-4`
 const ButtonContainer = tw.div`py-2 px-4 grid grid-cols-2`
 const ActionButton = tw.div`flex m-2 p-2 text-white font-bold font-sans rounded-lg items-center justify-center`
 
-const TempleInfoCard = ({ d, onShare }: { d: templeInterface; onShare: (d: templeInterface) => void }) => {
+const TempleInfoCard = ({
+  d,
+  onShare,
+}: {
+  d: templeInterface
+  onShare: (d: templeInterface) => void
+}) => {
   const router = useRouter()
   const [canShare, setCanShare] = useState(false)
 
@@ -26,8 +32,8 @@ const TempleInfoCard = ({ d, onShare }: { d: templeInterface; onShare: (d: templ
         <div className="col-span-2">
           <Image
             src={d.imgUrl}
-            width="100%"
-            height={100}
+            width={100}
+            height={56.25}
             layout="responsive"
             objectFit="cover"
             className="rounded-xl mr-4 shadow"
@@ -40,7 +46,9 @@ const TempleInfoCard = ({ d, onShare }: { d: templeInterface; onShare: (d: templ
       </CardHeaderContainer>
       {d.requests.length > 0 && (
         <CardBodyContainer>
-          <div className="flex items-center justify-center font-bold text-xl">สิ่งของที่ต้องการ</div>
+          <div className="flex items-center justify-center font-bold text-xl">
+            สิ่งของที่ต้องการ
+          </div>
           {d.requests.map((r) => (
             <div key={r._id} className="flex justify-between mt-2 px-7">
               <div className="text-lg font-bold">{r.name}</div>
