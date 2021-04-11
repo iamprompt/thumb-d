@@ -1,47 +1,76 @@
+import { GetServerSidePropsContext } from 'next'
+import axios from 'axios'
+import nookies from 'nookies'
+
 import Layout from '@/layouts'
 
-const ProfilePage = () => {
+import BackButton from '@/components/Navigation/BackButton'
+import OrderListCard from '@/components/Order/OrderListCard'
+
+import { orderTrack } from '~@types/order'
+
+import { getApiURL } from '@/utils'
+import { useAuth } from '@/utils/auth'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+const OrderStatus = ({ order }: { order: orderTrack[] }) => {
+  const router = useRouter()
+  const { user, loading, signout } = useAuth()
+  useEffect(() => {
+    if (!user && !loading) {
+      router.push('/auth/login')
+    }
+  }, [user, loading])
   return (
     <Layout nav>
-      <div className="aspect-w-16 aspect-h-5 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1593642532400-2682810df593?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-          alt=""
-          className="object-cover"
-        />
-      </div>
-
-      <div className="relative flex items-center justify-center z-10">
-        <div className="absolute rounded-full -t-16">
-          <img
-            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-            alt=""
-            className="w-32 h-32 object-cover rounded-full"
-          />
+      <div className="p-5 min-h-screen">
+        <BackButton />
+        <div className="mt-14 mb-10 text-center">
+          <div className="text-4xl font-bold">Order Status</div>
+        </div>
+        <div className="max-w-xl grid-cols-1 mx-auto space-y-5">
+          {user &&
+            order.map((item) => <OrderListCard key={item._id} d={item} />)}
+        </div>
+        <div className="flex items-center justify-center mt-10 px-5">
+          <div
+            className="bg-red-500 px-20 py-3 font-bold text-white rounded-full cursor-pointer"
+            onClick={() => signout()}
+          >
+            Sign out
+          </div>
         </div>
       </div>
-
-      <div className="mt-20 px-5 text-center">
-        <div className="font-bold text-4xl">Jane Doe</div>
-        <div className="font-light text-xs text-gray-400 mt-2">
-          Last online 10 minutes ago
-        </div>
-        <div className="font-light text-sm text-gray-700 mt-5">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center mt-6 px-5">
-        <div className="bg-red-500 px-20 py-3 font-bold text-white rounded-full">
-          Follow
-        </div>
-      </div>
-
-      <div className="mt-7 mx-5 border border-red-600 max-w-screen-md md:mx-auto"></div>
-      <div></div>
     </Layout>
   )
 }
 
-export default ProfilePage
+// export const getStaticProps: GetStaticProps = async () => {
+//   const order = await axios.get(getApiURL('orders'))
+
+//   return {
+//     props: {
+//       order: order.data.payload,
+//     },
+//   }
+// }
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const cookies = nookies.get(ctx)
+    const order = await axios.get(getApiURL('orders'), {
+      headers: { authorization: cookies.token },
+    })
+
+    return {
+      props: {
+        order: order.data.payload,
+      },
+    }
+  } catch (err) {
+    return { props: {} as never }
+  }
+}
+
+export default OrderStatus

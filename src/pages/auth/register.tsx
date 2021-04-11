@@ -120,7 +120,7 @@ const LoginPage = () => {
                 >
                   <MaterialIcons
                     icon={isShowPassword ? 'visibility' : 'visibility_off'}
-                    className="text-red-400 hover:text-red-600"
+                    className="bg-clip-text text-transparent from-brand-orange-primary to-brand-orange-secondary hover:from-brand-blue-primary hover:to-brand-blue-secondary bg-gradient-to-r"
                   />
                 </span>
               </div>
@@ -142,7 +142,7 @@ const LoginPage = () => {
                 >
                   <MaterialIcons
                     icon={isShowPassword ? 'visibility' : 'visibility_off'}
-                    className="text-red-400 hover:text-red-600"
+                    className="bg-clip-text text-transparent from-brand-orange-primary to-brand-orange-secondary hover:from-brand-blue-primary hover:to-brand-blue-secondary bg-gradient-to-r"
                   />
                 </span>
               </div>
@@ -154,6 +154,15 @@ const LoginPage = () => {
               >
                 Register
               </button>
+            </div>
+            <div className="text-center">
+              Already have an account?? Let&apos;s{' '}
+              <span
+                className="font-bold cursor-pointer hover:bg-clip-text hover:text-transparent hover:from-brand-blue-primary hover:to-brand-blue-secondary hover:bg-gradient-to-r"
+                onClick={() => router.push('/auth/login')}
+              >
+                Log in
+              </span>
             </div>
           </Form>
         </Formik>

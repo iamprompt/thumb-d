@@ -88,6 +88,7 @@ function useFirebaseAuth() {
   const signout = async (): Promise<void> => {
     await auth.signOut()
     await handleUser(false)
+    Router.push('/')
     return
   }
 

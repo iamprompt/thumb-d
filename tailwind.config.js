@@ -54,10 +54,10 @@ module.exports = {
   },
   variants: {
     extend: {
-      gradientColorStops: ['last'],
-      textColor: ['last'],
-      backgroundImage: ['last'],
-      backgroundClip: ['last'],
+      gradientColorStops: ['last', 'hover'],
+      textColor: ['last', 'hover'],
+      backgroundImage: ['last', 'hover'],
+      backgroundClip: ['last', 'hover'],
     },
   },
   plugins: [

@@ -21,7 +21,7 @@ type LoginForm = {
 const LoginPage = () => {
   const router = useRouter()
   const initialLoginValues: LoginForm = { email: '', password: '' }
-  const { user, loading, signInWithEmailAndPassword, signout } = useAuth()
+  const { user, loading, signInWithEmailAndPassword } = useAuth()
 
   const [isShowPassword, setShowPassword] = useState(false)
   const [callbackUrl, setCallbackUrl] = useState<string | null>(null)
@@ -33,11 +33,6 @@ const LoginPage = () => {
   const handleLogin = ({ email, password }: LoginForm) => {
     console.log('Handle')
     signInWithEmailAndPassword({ email, password }, callbackUrl)
-  }
-
-  const handleLogout = () => {
-    console.log('Handle')
-    signout()
   }
 
   useEffect(() => {
@@ -61,11 +56,7 @@ const LoginPage = () => {
           initialValues={initialLoginValues}
           onSubmit={(values, actions) => {
             console.log({ values, actions })
-            if (!user) {
-              handleLogin(values)
-            } else {
-              handleLogout()
-            }
+            handleLogin(values)
             actions.setSubmitting(false)
           }}
         >
@@ -98,7 +89,7 @@ const LoginPage = () => {
                 >
                   <MaterialIcons
                     icon={isShowPassword ? 'visibility' : 'visibility_off'}
-                    className="text-red-400 hover:text-red-600"
+                    className="bg-clip-text text-transparent hover:from-brand-orange-primary hover:to-brand-orange-secondary from-brand-blue-primary to-brand-blue-secondary bg-gradient-to-r"
                   />
                 </span>
               </div>
@@ -108,8 +99,17 @@ const LoginPage = () => {
                 type="submit"
                 className="bg-gradient-to-r from-brand-orange-primary to-brand-orange-secondary w-full py-3 rounded-2xl shadow-md text-lg text-white focus:outline-none"
               >
-                Register
+                Login
               </button>
+            </div>
+            <div className="text-center">
+              Do not have an account?? Let&apos;s{' '}
+              <span
+                className="font-bold cursor-pointer hover:bg-clip-text hover:text-transparent hover:from-brand-orange-primary hover:to-brand-orange-secondary hover:bg-gradient-to-r"
+                onClick={() => router.push('/auth/register')}
+              >
+                Register
+              </span>
             </div>
           </Form>
         </Formik>
