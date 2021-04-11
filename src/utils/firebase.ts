@@ -1,5 +1,5 @@
 // Firebase Config
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import 'firebase/auth'
 
 export const firebaseConfig = {
@@ -16,7 +16,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
 }
 
-const auth = firebase.auth()
-const db = firebase.firestore()
+const auth: firebase.auth.Auth = firebase.auth()
+const _auth: typeof firebase.auth = firebase.auth
 
-export { auth, db }
+export { _auth, auth }

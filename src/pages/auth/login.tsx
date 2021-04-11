@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form, Field } from 'formik'
 
 import tw from 'twin.macro'
 
 import Layout from '@/layouts'
+
+import { useAuth } from '@/utils/auth'
 
 import { MaterialIcons } from '@/components/Icons'
 
@@ -19,7 +21,30 @@ type LoginForm = {
 const LoginPage = () => {
   const router = useRouter()
   const initialLoginValues: LoginForm = { email: '', password: '' }
+  const { user, loading, signInWithEmailAndPassword, signout } = useAuth()
+
   const [isShowPassword, setShowPassword] = useState(false)
+  const [callbackUrl, setCallbackUrl] = useState<string | null>(null)
+
+  const handleLogin = ({ email, password }: LoginForm) => {
+    console.log('Handle')
+    signInWithEmailAndPassword({ email, password }, callbackUrl)
+  }
+
+  const handleLogout = () => {
+    console.log('Handle')
+    signout()
+  }
+
+  useEffect(() => {
+    setCallbackUrl(router.query.callbackUrl as string)
+  }, [router])
+
+  useEffect(() => {
+    console.log('Init')
+    console.log(user)
+    console.log(loading)
+  }, [user])
 
   return (
     <Layout title="Login">
@@ -32,8 +57,13 @@ const LoginPage = () => {
           initialValues={initialLoginValues}
           onSubmit={(values, actions) => {
             console.log({ values, actions })
+            if (!user) {
+              handleLogin(values)
+            } else {
+              handleLogout()
+            }
             actions.setSubmitting(false)
-            router.push('/')
+            //router.push('/')
           }}
         >
           <Form className="space-y-8 w-full">

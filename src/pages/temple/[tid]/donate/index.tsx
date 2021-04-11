@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Router from 'next/router'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import axios from 'axios'
@@ -16,28 +17,57 @@ import TempleRequestCard from '@/components/Temple/TempleRequestCard'
 import { MaterialIcons } from '@/components/Icons'
 
 import { getApiURL } from '../../../../utils/api'
+import { useAuth } from '@/utils/auth'
 
-const DonatePage = ({ temple, initOrder }: { temple: templeInterface; initOrder: orders }) => {
+const DonatePage = ({
+  temple,
+  initOrder,
+}: {
+  temple: templeInterface
+  initOrder: orders
+}) => {
   const router = useRouter()
+  const { user, loading } = useAuth()
+
+  if (!user && !loading) {
+    Router.push(`/auth/login?callbackUrl=${router.asPath}`)
+  }
 
   const [isFetch, setFetch] = useState<boolean>(false)
   const [order, setOrder] = useState<orders>(initOrder)
   const [total, setTotal] = useState<number>(0)
 
-  const changeOrderValue = (p: templeRequestItem, currentCount: number, v: number) => {
+  const changeOrderValue = (
+    p: templeRequestItem,
+    currentCount: number,
+    v: number
+  ) => {
     console.log(p)
-    if (order[p._id].quantity + v >= 0 && order[p._id].quantity + v <= p.shopItem.inStock) {
-      setOrder({ ...order, [p._id]: { ...order[p._id], quantity: currentCount + v } })
+    if (
+      order[p._id].quantity + v >= 0 &&
+      order[p._id].quantity + v <= p.shopItem.inStock
+    ) {
+      setOrder({
+        ...order,
+        [p._id]: { ...order[p._id], quantity: currentCount + v },
+      })
     }
   }
 
   useEffect(() => {
-    setTotal(Object.keys(order).reduce((sum, key) => sum + order[key].quantity * order[key].shopItem.price, 0))
+    setTotal(
+      Object.keys(order).reduce(
+        (sum, key) => sum + order[key].quantity * order[key].shopItem.price,
+        0
+      )
+    )
   })
 
   useEffect(() => {
     if (!isFetch) {
-      const templeLocal = fetchFromLocalStorage('@TD-order-temple') as templeInterface
+      const templeLocal = fetchFromLocalStorage(
+        '@TD-order-temple'
+      ) as templeInterface
       if (router.query.tid !== templeLocal?._id) {
         window.localStorage.removeItem('@TD-order-temple')
         window.localStorage.removeItem('@TD-order')
@@ -73,9 +103,19 @@ const DonatePage = ({ temple, initOrder }: { temple: templeInterface; initOrder:
         </div>
       </div>
 
-      <div className={`mt-7 ${total > 0 ? 'pb-24' : 'pb-10'} max-w-screen-md md:mx-auto`}>
+      <div
+        className={`mt-7 ${
+          total > 0 ? 'pb-24' : 'pb-10'
+        } max-w-screen-md md:mx-auto`}
+      >
         {temple.requests.map((p) => (
-          <TempleRequestCard key={p._id} d={p} value={order} onUpdate={changeOrderValue} onInput={setOrder} />
+          <TempleRequestCard
+            key={p._id}
+            d={p}
+            value={order}
+            onUpdate={changeOrderValue}
+            onInput={setOrder}
+          />
         ))}
       </div>
       {total > 0 ? (
@@ -87,9 +127,15 @@ const DonatePage = ({ temple, initOrder }: { temple: templeInterface; initOrder:
           <button
             className="p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none flex items-center"
             onClick={() => {
-              window.localStorage.setItem('@TD-order-temple', JSON.stringify(temple))
+              window.localStorage.setItem(
+                '@TD-order-temple',
+                JSON.stringify(temple)
+              )
               window.localStorage.setItem('@TD-order', JSON.stringify(order))
-              window.localStorage.setItem('@TD-order-timestamp', dayjs().toISOString())
+              window.localStorage.setItem(
+                '@TD-order-timestamp',
+                dayjs().toISOString()
+              )
               router.push(`${router.asPath}/summary`)
             }}
           >
@@ -115,12 +161,16 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const temple = await axios.get(getApiURL(`temples/${templeId}`))
 
-  if (!temple.data.payload) return { redirect: { destination: '/' }, props: { temple: undefined } }
+  if (!temple.data.payload)
+    return { redirect: { destination: '/' }, props: { temple: undefined } }
 
   //console.log(temple.data.payload)
 
   const order = temple.data.payload.requests.reduce(
-    (s: orders, v: any) => ({ ...s, [v._id]: { shopItem: v.shopItem, quantity: 0 } }),
+    (s: orders, v: any) => ({
+      ...s,
+      [v._id]: { shopItem: v.shopItem, quantity: 0 },
+    }),
     {}
   )
 

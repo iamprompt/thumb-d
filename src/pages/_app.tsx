@@ -1,11 +1,14 @@
 import { AppProps } from 'next/app'
 import '../styles/globals.css'
 import '@ibm/plex/css/ibm-plex.css'
+import { AuthProvider } from '@/utils/auth'
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </>
   )
 }
