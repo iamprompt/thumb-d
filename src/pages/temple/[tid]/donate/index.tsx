@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Router from 'next/router'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import axios from 'axios'
@@ -15,6 +14,7 @@ import Layout from '../../../../layouts'
 
 import TempleRequestCard from '@/components/Temple/TempleRequestCard'
 import { MaterialIcons } from '@/components/Icons'
+import BackButton from '@/components/Navigation/BackButton'
 
 import { getApiURL } from '../../../../utils/api'
 import { useAuth } from '@/utils/auth'
@@ -30,7 +30,7 @@ const DonatePage = ({
   const { user, loading } = useAuth()
 
   if (!user && !loading) {
-    Router.push(`/auth/login?callbackUrl=${router.asPath}`)
+    router.push(`/auth/login?callbackUrl=${router.asPath}`)
   }
 
   const [isFetch, setFetch] = useState<boolean>(false)
@@ -91,6 +91,7 @@ const DonatePage = ({
 
   return (
     <Layout>
+      <BackButton variant="white" />
       <div className="aspect-w-16 aspect-h-5 z-0">
         <img src={temple.imgUrl} alt="" className="object-cover" />
       </div>

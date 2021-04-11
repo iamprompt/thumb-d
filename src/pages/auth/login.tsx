@@ -26,6 +26,10 @@ const LoginPage = () => {
   const [isShowPassword, setShowPassword] = useState(false)
   const [callbackUrl, setCallbackUrl] = useState<string | null>(null)
 
+  if (user && !loading) {
+    router.push(`${callbackUrl}`)
+  }
+
   const handleLogin = ({ email, password }: LoginForm) => {
     console.log('Handle')
     signInWithEmailAndPassword({ email, password }, callbackUrl)
