@@ -1,6 +1,3 @@
-import '@fontsource/material-icons'
-import '@fontsource/material-icons-rounded'
-
 type Props = {
   icon: string
   type?: 'Filled' | 'Rounded'
