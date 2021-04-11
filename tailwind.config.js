@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
-        'IBM Plex Sans Thai',
+        'Noto Sans Thai UI',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
@@ -17,7 +17,7 @@ module.exports = {
         'sans-serif',
       ],
       serif: [
-        'IBM Plex Sans Thai Looped',
+        'Noto Serif Thai',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
@@ -55,5 +55,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio'), require('@tailwindcss/line-clamp')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
+  ],
 }

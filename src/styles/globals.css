@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons&family=Material+Icons+Round');
-@import url('https://cdn.lazywasabi.net/fonts/IBMPlexSansThai/IBMPlexSansThai.css');
+@import url('//fonts.googleapis.com/earlyaccess/notosansthaiui.css');
+@import url('//fonts.googleapis.com/earlyaccess/notoserifthai.css');
 
 @tailwind base;
 @tailwind components;
