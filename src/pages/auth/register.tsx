@@ -13,15 +13,22 @@ import { MaterialIcons } from '@/components/Icons'
 const Header = tw.div`font-bold text-5xl md:text-7xl space-y-3 w-full mb-5`
 const FormContainer = tw.div`flex flex-col max-w-xl mx-auto items-center justify-center min-h-screen p-5`
 
-type LoginForm = {
+type RegisterForm = {
+  name: string
   email: string
   password: string
+  repassword: string
 }
 
 const LoginPage = () => {
   const router = useRouter()
-  const initialLoginValues: LoginForm = { email: '', password: '' }
-  const { user, loading, signInWithEmailAndPassword, signout } = useAuth()
+  const initialRegisterValues: RegisterForm = {
+    name: '',
+    email: '',
+    password: '',
+    repassword: '',
+  }
+  const { user, loading, registerWithEmailAndPassword, signout } = useAuth()
 
   const [isShowPassword, setShowPassword] = useState(false)
   const [callbackUrl, setCallbackUrl] = useState<string | null>(null)
@@ -30,9 +37,15 @@ const LoginPage = () => {
     router.push(`${callbackUrl || '/'}`)
   }
 
-  const handleLogin = ({ email, password }: LoginForm) => {
+  const handleRegister = ({
+    name,
+    email,
+    password,
+    repassword,
+  }: RegisterForm) => {
     console.log('Handle')
-    signInWithEmailAndPassword({ email, password }, callbackUrl)
+    if (password !== repassword) return
+    registerWithEmailAndPassword({ name, email, password }, callbackUrl)
   }
 
   const handleLogout = () => {
@@ -54,15 +67,14 @@ const LoginPage = () => {
     <Layout title="Login">
       <FormContainer>
         <Header>
-          <h1>Hello.</h1>
-          <h1>Welcome Back</h1>
+          <h1>Register</h1>
         </Header>
         <Formik
-          initialValues={initialLoginValues}
+          initialValues={initialRegisterValues}
           onSubmit={(values, actions) => {
             console.log({ values, actions })
             if (!user) {
-              handleLogin(values)
+              handleRegister(values)
             } else {
               handleLogout()
             }
@@ -70,6 +82,16 @@ const LoginPage = () => {
           }}
         >
           <Form className="space-y-8 w-full">
+            <div>
+              <label htmlFor="name">Full Name</label>
+              <Field
+                type="text"
+                name="name"
+                id="name"
+                required
+                className="mt-2 appearance-none py-3 px-3 w-full rounded-2xl border-none bg-white focus:bg-white shadow-md focus:shadow-lg focus:ring focus:ring-red-400"
+              />
+            </div>
             <div>
               <label htmlFor="email">Email address</label>
               <Field
@@ -104,9 +126,31 @@ const LoginPage = () => {
               </div>
             </div>
             <div>
+              <label htmlFor="repassword">Confirm Password</label>
+              <div className="relative mt-2">
+                <Field
+                  type={isShowPassword ? 'text' : 'password'}
+                  name="repassword"
+                  id="repassword"
+                  required
+                  className="appearance-none py-3 px-3 w-full rounded-2xl border-none bg-white focus:bg-white shadow-md focus:shadow-lg focus:ring focus:ring-red-400"
+                />
+                <span
+                  id="passwordVisText"
+                  className="absolute inset-y-0 right-4 flex items-center cursor-pointer"
+                  onClick={() => setShowPassword(!isShowPassword)}
+                >
+                  <MaterialIcons
+                    icon={isShowPassword ? 'visibility' : 'visibility_off'}
+                    className="text-red-400 hover:text-red-600"
+                  />
+                </span>
+              </div>
+            </div>
+            <div>
               <button
                 type="submit"
-                className="bg-gradient-to-r from-brand-orange-primary to-brand-orange-secondary w-full py-3 rounded-2xl shadow-md text-lg text-white focus:outline-none"
+                className="bg-gradient-to-r from-brand-blue-primary to-brand-blue-secondary w-full py-3 rounded-2xl shadow-md text-lg text-white focus:outline-none"
               >
                 Register
               </button>

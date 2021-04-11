@@ -4,7 +4,12 @@ import { _auth, auth } from './firebase'
 import firebase from 'firebase/app'
 import nookies from 'nookies'
 
-import { IUser, IAuthContext, EmailAndPassword } from '~@types/auth'
+import {
+  IUser,
+  IAuthContext,
+  EmailAndPassword,
+  NameAndEmailAndPassword,
+} from '~@types/auth'
 
 const authContext = createContext<IAuthContext | null>(null)
 
@@ -52,6 +57,22 @@ function useFirebaseAuth() {
     return response
   }
 
+  const registerWithEmailAndPassword = async (
+    { name, email, password }: NameAndEmailAndPassword,
+    redirect = '/'
+  ): Promise<firebase.auth.UserCredential> => {
+    setLoading(true)
+    const response = await auth.createUserWithEmailAndPassword(email, password)
+    response.user.updateProfile({
+      displayName: name,
+    })
+    handleUser(response.user)
+    if (redirect) {
+      Router.push(redirect)
+    }
+    return response
+  }
+
   const signinWithGoogle = async (
     redirect: string
   ): Promise<firebase.auth.UserCredential> => {
@@ -89,6 +110,7 @@ function useFirebaseAuth() {
     user,
     loading,
     signInWithEmailAndPassword,
+    registerWithEmailAndPassword,
     signinWithGoogle,
     signout,
   }

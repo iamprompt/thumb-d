@@ -7,11 +7,16 @@ type IAuthContext = {
     { email, password }: EmailAndPassword,
     redirect?: string
   ) => Promise<firebase.auth.UserCredential>
+  registerWithEmailAndPassword: (
+    { name, email, password }: NameAndEmailAndPassword,
+    redirect?: string
+  ) => Promise<firebase.auth.UserCredential>
   signinWithGoogle: (redirect?: string) => Promise<firebase.auth.UserCredential>
   signout: () => Promise<void>
 }
 
 type EmailAndPassword = { email: string; password: string }
+type NameAndEmailAndPassword = { name: string; email: string; password: string }
 
 type IUser = {
   uid: string
@@ -21,4 +26,4 @@ type IUser = {
   photoUrl: string
 }
 
-export type { IUser, IAuthContext, EmailAndPassword }
+export type { IUser, IAuthContext, EmailAndPassword, NameAndEmailAndPassword }
