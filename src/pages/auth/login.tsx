@@ -42,8 +42,8 @@ const LoginPage = () => {
 
   useEffect(() => {
     console.log('Init')
-    console.log(user)
-    console.log(loading)
+    // console.log(user)
+    // console.log(loading)
   }, [user])
 
   return (
@@ -63,7 +63,6 @@ const LoginPage = () => {
               handleLogout()
             }
             actions.setSubmitting(false)
-            //router.push('/')
           }}
         >
           <Form className="space-y-8 w-full">

@@ -9,7 +9,7 @@ const authContext = createContext<IAuthContext | null>(null)
 
 export function AuthProvider({ children }: any) {
   const auth = useFirebaseAuth()
-  console.log(auth)
+  // console.log(auth)
 
   return <authContext.Provider value={auth}>{children}</authContext.Provider>
 }
