@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
-        'Noto Sans Thai UI',
         '-apple-system',
+        'Sarabun',
         'BlinkMacSystemFont',
         'Segoe UI',
         'Roboto',
@@ -17,8 +17,8 @@ module.exports = {
         'sans-serif',
       ],
       serif: [
-        'Noto Serif Thai',
         '-apple-system',
+        'Sarabun',
         'BlinkMacSystemFont',
         'Segoe UI',
         'Roboto',

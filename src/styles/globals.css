@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Material+Icons&family=Material+Icons+Round');
-@import url('//fonts.googleapis.com/earlyaccess/notosansthaiui.css');
-@import url('//fonts.googleapis.com/earlyaccess/notoserifthai.css');
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&family=Material+Icons&family=Material+Icons+Round');
+
 
 @tailwind base;
 @tailwind components;
