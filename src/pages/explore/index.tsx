@@ -7,7 +7,7 @@ import { getApiURL } from '@/utils/api'
 import Layout from '@/layouts'
 
 import Map from '@/components/Explore/Map'
-import TempleInfoCard from '@/components/Explore/TempleInfoCard'
+import TempleInfoCard from '@/components/Temple/TempleInfoCard'
 import SearchBox from '@/components/Explore/SearchBox'
 
 import { templeInterface } from '~@types'

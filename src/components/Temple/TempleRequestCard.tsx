@@ -12,7 +12,11 @@ const shopList = ({
   onInput,
 }: {
   d: templeRequestItem
-  onUpdate: (p: templeRequestItem, currentCount: number, v: number) => void | undefined
+  onUpdate: (
+    p: templeRequestItem,
+    currentCount: number,
+    v: number
+  ) => void | undefined
   value: {
     [key: string]: {
       shopItem: {
@@ -38,10 +42,16 @@ const shopList = ({
     <div className="bg-white border-t border-b">
       <div className="flex p-3 space-x-2">
         <div className="flex-shrink-0 w-32 h-32">
-          <img src={d.shopItem.imgUrl} className="object-cover rounded-xl w-32 h-32" alt="" />
+          <img
+            src={d.shopItem.imgUrl}
+            className="object-cover rounded-xl w-32 h-32"
+            alt=""
+          />
         </div>
         <div className="flex-grow p-2">
-          <div className="font-light text-sm sm:text-md">{d.shopItem.shopName}</div>
+          <div className="font-light text-sm sm:text-md">
+            {d.shopItem.shopName}
+          </div>
           <div className="font-bold text-xl sm:text-4xl">{d.shopItem.name}</div>
           <div className="text-2xl font-normal mt-3">
             {numeral(d.shopItem.price).format('0,0.00')}
@@ -52,7 +62,9 @@ const shopList = ({
       </div>
       <div className="flex flex-1 p-3 items-center justify-center">
         <MaterialIcons
-          className={`p-3 ${value[d._id].quantity === 0 ? '!text-gray-200' : 'cursor-pointer'}`}
+          className={`p-3 ${
+            value[d._id].quantity === 0 ? '!text-gray-200' : 'cursor-pointer'
+          }`}
           onClick={() => onUpdate(d, value[d._id].quantity, -1)}
           icon="remove"
         />
@@ -72,7 +84,11 @@ const shopList = ({
           size={3}
         />
         <MaterialIcons
-          className={`p-3 ${value[d._id].quantity === d.shopItem.inStock ? '!text-gray-200' : 'cursor-pointer'}`}
+          className={`p-3 ${
+            value[d._id].quantity === d.shopItem.inStock
+              ? '!text-gray-200'
+              : 'cursor-pointer'
+          }`}
           onClick={() => onUpdate(d, value[d._id].quantity, 1)}
           icon="add"
         />

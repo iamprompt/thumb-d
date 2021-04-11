@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server'
 
 import { templeInterface } from '~@types'
 
-import TempleInfoWindow from './TempleInfoWindowMap'
+import TempleInfoWindow from '@/components/Temple/TempleInfoWindowMap'
 
 type Props = {
   d: templeInterface[]

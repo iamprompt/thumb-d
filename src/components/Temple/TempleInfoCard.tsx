@@ -10,7 +10,7 @@ const TempleCard = tw.div`flex flex-col bg-white shadow-xl rounded-xl font-serif
 const CardHeaderContainer = tw.div`grid grid-cols-5 py-4 px-4 gap-3 border-b`
 const CardBodyContainer = tw.div`pt-4 px-4 gap-4`
 const ButtonContainer = tw.div`py-2 px-4 grid grid-cols-2`
-const ActionButton = tw.div`flex m-2 p-2 text-white font-bold font-sans rounded-lg items-center justify-center`
+const ActionButton = tw.div`flex m-2 p-2 text-white font-bold font-sans rounded-lg items-center justify-center cursor-pointer`
 
 const TempleInfoCard = ({
   d,
