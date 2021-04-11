@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from 'react'
 import Router from 'next/router'
 import { _auth, auth } from './firebase'
 import firebase from 'firebase/app'
+import nookies from 'nookies'
 
 import { IUser, IAuthContext, EmailAndPassword } from '~@types/auth'
 
@@ -25,13 +26,14 @@ function useFirebaseAuth() {
   const handleUser = async (rawUser: firebase.User | false) => {
     if (rawUser) {
       const user = await formatUser(rawUser)
-      // const { token, ...userWithoutToken } = user
-      // createUser(user.uid, userWithoutToken)
+      const token = await rawUser.getIdToken()
       setUser(user)
+      nookies.set(undefined, 'token', token, { path: '/' })
       setLoading(false)
       return user
     } else {
       setUser(null)
+      nookies.set(undefined, 'token', '', { path: '/' })
       setLoading(false)
       return false
     }
@@ -71,6 +73,16 @@ function useFirebaseAuth() {
   useEffect(() => {
     const unsubscribe = auth.onIdTokenChanged(handleUser)
     return () => unsubscribe()
+  }, [])
+
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      const user = auth.currentUser
+      if (user) await user.getIdToken(true)
+    }, 10 * 60 * 1000)
+
+    // clean up setInterval
+    return () => clearInterval(handle)
   }, [])
 
   return {

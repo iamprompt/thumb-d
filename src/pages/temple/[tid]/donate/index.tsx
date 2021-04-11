@@ -61,7 +61,7 @@ const DonatePage = ({
         0
       )
     )
-  })
+  }, [order])
 
   useEffect(() => {
     if (!isFetch) {
@@ -82,7 +82,7 @@ const DonatePage = ({
       }
       setFetch(true)
     }
-  })
+  }, [])
 
   const fetchFromLocalStorage = (localName: string) => {
     const localTemp = window.localStorage.getItem(localName) as string
@@ -175,7 +175,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     {}
   )
 
-  //console.log(order)
+  console.log(order)
 
   return {
     props: {

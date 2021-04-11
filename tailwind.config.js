@@ -53,7 +53,12 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      gradientColorStops: ['last'],
+      textColor: ['last'],
+      backgroundImage: ['last'],
+      backgroundClip: ['last'],
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
