@@ -36,18 +36,18 @@ const TempleInfoCard = ({
             height={56.25}
             layout="responsive"
             objectFit="cover"
-            className="rounded-xl mr-4 shadow"
+            className="mr-4 shadow rounded-xl"
           />
         </div>
-        <div className="flex flex-col justify-center items-end col-span-3">
+        <div className="flex flex-col items-end justify-center col-span-3">
           <div className="text-2xl font-bold text-right">{d.name}</div>
           {/* <div className="text-lg text-right">ข้อมูลเพิ่มเติม</div> */}
         </div>
       </CardHeaderContainer>
       {d.requests.length > 0 && (
         <CardBodyContainer>
-          <div className="flex items-center justify-center font-bold text-xl">
-            สิ่งของที่ต้องการ
+          <div className="flex items-center justify-center text-xl font-bold">
+            Needed Items
           </div>
           {d.requests.map((r) => (
             <div key={r._id} className="flex justify-between mt-2 px-7">
@@ -66,14 +66,14 @@ const TempleInfoCard = ({
           }`}
           onClick={() => router.push(`/temple/${d._id}/donate`)}
         >
-          บริจาค
+          Donate
         </ActionButton>
         {canShare && (
           <ActionButton
             className="bg-gradient-to-r from-brand-blue-primary to-brand-blue-secondary"
             onClick={() => onShare(d)}
           >
-            บอกบุญ
+            Share
           </ActionButton>
         )}
       </ButtonContainer>

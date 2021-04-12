@@ -4,7 +4,7 @@ import nookies from 'nookies'
 
 import Layout from '@/layouts'
 
-import BackButton from '@/components/Navigation/BackButton'
+// import BackButton from '@/components/Navigation/BackButton'
 import OrderListCard from '@/components/Order/OrderListCard'
 
 import { orderTrack } from '~@types/order'
@@ -24,18 +24,18 @@ const OrderStatus = ({ order }: { order: orderTrack[] }) => {
   }, [user, loading])
   return (
     <Layout nav>
-      <div className="p-5 min-h-screen pb-24">
-        <BackButton />
-        <div className="mt-14 mb-10 text-center">
+      <div className="min-h-screen p-5 pb-24">
+        {/* <BackButton /> */}
+        <div className="mb-10 text-center mt-14">
           <div className="text-4xl font-bold">Order Status</div>
         </div>
         <div className="max-w-xl grid-cols-1 mx-auto space-y-5">
           {user &&
             order.map((item) => <OrderListCard key={item._id} d={item} />)}
         </div>
-        <div className="flex items-center justify-center mt-10 px-5">
+        <div className="flex items-center justify-center px-5 mt-10">
           <div
-            className="bg-red-500 px-20 py-3 font-bold text-white rounded-full cursor-pointer"
+            className="px-20 py-2 font-bold text-white bg-gray-200 rounded-full cursor-pointer"
             onClick={() => signout()}
           >
             Sign out

@@ -44,23 +44,23 @@ const shopList = ({
         <div className="flex-shrink-0 w-32 h-32">
           <img
             src={d.shopItem.imgUrl}
-            className="object-cover rounded-xl w-32 h-32"
+            className="object-cover w-32 h-32 rounded-xl"
             alt=""
           />
         </div>
         <div className="flex-grow p-2">
-          <div className="font-light text-sm sm:text-md">
+          <div className="text-sm font-light sm:text-md">
             {d.shopItem.shopName}
           </div>
-          <div className="font-bold text-xl sm:text-4xl">{d.shopItem.name}</div>
-          <div className="text-2xl font-normal mt-3">
+          <div className="text-xl font-bold sm:text-4xl">{d.shopItem.name}</div>
+          <div className="mt-3 text-2xl font-normal">
             {numeral(d.shopItem.price).format('0,0.00')}
-            {' บาท / '}
+            {' Baht / '}
             {d.shopItem.unit}
           </div>
         </div>
       </div>
-      <div className="flex flex-1 p-3 items-center justify-center">
+      <div className="flex items-center justify-center flex-1 p-3">
         <MaterialIcons
           className={`p-3 ${
             value[d._id].quantity === 0 ? '!text-gray-200' : 'cursor-pointer'
@@ -80,7 +80,7 @@ const shopList = ({
               },
             })
           }}
-          className="p-3 m-2 border rounded-xl text-center"
+          className="p-3 m-2 text-center border rounded-xl"
           size={3}
         />
         <MaterialIcons

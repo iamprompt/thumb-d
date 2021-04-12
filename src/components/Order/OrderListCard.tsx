@@ -24,7 +24,7 @@ const OrderListCard = ({ d }: { d: orderTrack }) => {
       </ImageContainer>
       <BodyContainer>
         <div className="text-xl font-bold">{d.temple.name}</div>
-        <div className="text-xs font-serif text-gray-400">
+        <div className="font-serif text-xs text-gray-400">
           {dayjs.unix(d.createdAt._seconds).format('DD MMMM YYYY HH:mm น.')}
         </div>
         <div className="px-2 my-2 space-y-2 text-gray-400">
@@ -57,7 +57,7 @@ const OrderListCard = ({ d }: { d: orderTrack }) => {
         <div className="flex justify-end">
           <StyledButton
             text="See More"
-            onClick={() => router.push(`${router.asPath}/${d._id}`)}
+            onClick={() => router.push(`${router.asPath}/order/${d._id}`)}
           />
         </div>
       </BodyContainer>

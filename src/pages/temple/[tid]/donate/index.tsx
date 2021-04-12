@@ -92,14 +92,14 @@ const DonatePage = ({
   return (
     <Layout>
       <BackButton variant="white" />
-      <div className="aspect-w-16 aspect-h-5 z-0">
+      <div className="z-0 aspect-w-16 aspect-h-5">
         <img src={temple.imgUrl} alt="" className="object-cover" />
       </div>
 
-      <div className="mt-10 px-5 text-center">
-        <div className="font-bold text-4xl">{temple.name}</div>
-        <div className="font-light text-sm text-gray-400 mt-2 flex items-center justify-center">
-          <MaterialIcons icon="places" className="text-sm -mr-2" />
+      <div className="px-5 mt-10 text-center">
+        <div className="text-4xl font-bold">{temple.name}</div>
+        <div className="flex items-center justify-center mt-2 text-sm font-light text-gray-400">
+          <MaterialIcons icon="places" className="-mr-2 text-sm" />
           {`${temple.location.city} ${temple.location.province}`}
         </div>
       </div>
@@ -120,13 +120,13 @@ const DonatePage = ({
         ))}
       </div>
       {total > 0 ? (
-        <div className="flex fixed bottom-0 w-full bg-white border-t p-4 rounded-t-xl justify-between">
+        <div className="fixed bottom-0 flex justify-between w-full p-4 bg-white border-t rounded-t-xl">
           <div className="p-2 font-bold">
-            {'รวม '}
+            {'Total '}
             {numeral(total).format('0,0.00')} {' บาท'}
           </div>
           <button
-            className="p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none flex items-center"
+            className="flex items-center p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none"
             onClick={() => {
               window.localStorage.setItem(
                 '@TD-order-temple',

@@ -13,7 +13,7 @@ import SearchBox from '@/components/Explore/SearchBox'
 import { templeInterface } from '~@types'
 
 const ExplorePage = ({ temple }: { temple: templeInterface[] }) => {
-  const [explorePage, setExplore] = useState<'list' | 'map'>('list')
+  const [explorePage, setExplore] = useState<'list' | 'map'>('map')
   const [searchKw, setSearchKw] = useState('')
   const [dataFiltered, setDataFiltered] = useState<templeInterface[]>([])
 
@@ -62,18 +62,22 @@ const ExplorePage = ({ temple }: { temple: templeInterface[] }) => {
             explorePage === 'list' ? setExplore('map') : setExplore('list')
           }}
         >
-          <div className="w-full h-full rounded-full bg-white p-1">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r">
+          <div className="w-full h-full p-1 bg-white rounded-full">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r">
               {explorePage === 'list' ? 'Map' : 'List'}
             </span>
           </div>
         </div>
         {explorePage === 'map' && <Map d={temple} />}
         {explorePage === 'list' && (
-          <div className="px-5 pb-24 pt-20 max-w-screen-sm mx-auto">
-            <div className="text-center font-bold text-4xl mb-5">วัด</div>
-            <SearchBox v={searchKw} setV={setSearchKw} placeHolder="หาอะไรดี" />
-            <div className="space-y-5 mt-3">
+          <div className="max-w-screen-sm px-5 pt-20 pb-24 mx-auto">
+            <div className="mb-5 text-4xl font-bold text-center">Temples</div>
+            <SearchBox
+              v={searchKw}
+              setV={setSearchKw}
+              placeHolder="Search for temples"
+            />
+            <div className="mt-3 space-y-5">
               {dataFiltered.map((t) => (
                 <TempleInfoCard key={t._id} d={t} onShare={handleShare} />
               ))}
