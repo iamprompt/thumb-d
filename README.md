@@ -1,5 +1,11 @@
 # Thumb D - ธรรมดี
 
+## Production
+
+- [`https://thumb-d.vercel.app/`](https://thumb-d.vercel.app/)
+
+  **Remark:** In this period, we designed only for the mobile visit. The website will work good on mobile.
+
 ## Dependencies
 
 - [`iamprompt/thumbd-api`](https://github.com/iamprompt/thumb-d-api) (Cloud Functions)
