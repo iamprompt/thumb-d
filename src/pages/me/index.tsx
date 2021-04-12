@@ -31,9 +31,9 @@ const OrderStatus = ({ order }: { order: orderTrack[] }) => {
           {user &&
             order.map((item) => <OrderListCard key={item._id} d={item} />)}
         </div>
-        <div className="flex items-center justify-center mt-10 px-5">
+        <div className="flex items-center justify-center px-5 mt-10">
           <div
-            className="bg-red-500 px-20 py-3 font-bold text-white rounded-full cursor-pointer"
+            className="px-20 py-2 font-bold text-white bg-gray-200 rounded-full cursor-pointer"
             onClick={() => signout()}
           >
             Sign out

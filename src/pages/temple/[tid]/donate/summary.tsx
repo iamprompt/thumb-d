@@ -57,10 +57,10 @@ const DonatePage = () => {
     <Layout>
       <BackButton />
       {temple && (
-        <div className="pt-10 pb-5 px-5 text-center">
-          <div className="font-bold text-4xl">สรุปรายการสั่งซื้อ</div>
-          <div className="font-light text-sm text-gray-400 mt-2 flex items-center justify-center">
-            <MaterialIcons icon="places" className="text-sm -mr-2" />
+        <div className="px-5 pt-10 pb-5 text-center">
+          <div className="text-4xl font-bold">Order Summary</div>
+          <div className="flex items-center justify-center mt-2 text-sm font-light text-gray-400">
+            <MaterialIcons icon="places" className="-mr-2 text-sm" />
             {`${temple.name}, ${temple.location.city}, ${temple.location.province}`}
           </div>
         </div>
@@ -76,24 +76,24 @@ const DonatePage = () => {
           })}
       </div>
 
-      <div className="flex flex-col absolute bottom-0 w-full bg-white p-4 rounded-t-xl justify-center text-center space-y-2 border-t">
+      <div className="absolute bottom-0 flex flex-col justify-center w-full p-4 space-y-2 text-center bg-white border-t rounded-t-xl">
         <div className="p-2 text-2xl">
-          {`รวม`}{' '}
+          {`Total`}{' '}
           <span className="font-bold">{`${numeral(total).format(
             '0,0.00'
           )}`}</span>{' '}
-          {`บาท`}
+          {`Baht`}
         </div>
         <div className="flex justify-center space-x-2">
           <button
-            className="p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none flex items-center"
+            className="flex items-center p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none"
             onClick={() => router.push(router.asPath.replace('/summary', ''))}
           >
             <MaterialIcons icon="add_shopping_cart" className="mr-2" />
             Edit
           </button>
           <button
-            className="p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none flex items-center"
+            className="flex items-center p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none"
             onClick={() => handleCheckout()}
           >
             <MaterialIcons icon="shopping_cart" className="mr-2" />

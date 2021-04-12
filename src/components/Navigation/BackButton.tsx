@@ -11,7 +11,7 @@ const BackButton = ({ variant = 'orange' }: Props) => {
   const Gradient = `bg-clip-text text-transparent from-brand-${variant}-primary to-brand-${variant}-secondary bg-gradient-to-r`
 
   return (
-    <div className="absolute z-50 inset-3 h-6 w-6">
+    <div className="absolute z-50 w-6 h-6 inset-3">
       <MaterialIcons
         icon="arrow_back_ios_new"
         onClick={() => router.back()}
