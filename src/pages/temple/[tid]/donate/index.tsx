@@ -123,7 +123,7 @@ const DonatePage = ({
         <div className="fixed bottom-0 flex justify-between w-full p-4 bg-white border-t rounded-t-xl">
           <div className="p-2 font-bold">
             {'Total '}
-            {numeral(total).format('0,0.00')} {' บาท'}
+            {numeral(total).format('0,0.00')} {' Baht'}
           </div>
           <button
             className="flex items-center p-2 bg-green-200 rounded-lg focus:ring-0 focus:outline-none"

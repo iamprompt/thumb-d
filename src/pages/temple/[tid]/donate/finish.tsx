@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Layout from '@/layouts'
 
 import { MaterialIcons } from '@/components/Icons'
-import BackButton from '@/components/Navigation/BackButton'
 
 const FinishPage = () => {
   const router = useRouter()
@@ -29,7 +28,6 @@ const FinishPage = () => {
 
   return (
     <Layout nav>
-      <BackButton />
       <div className="flex flex-col items-center justify-center min-h-screen p-5 text-center">
         <img src="/images/icons/check.png" alt="" />
         <div className={`text-2xl mt-10 px-10 font-bold`}>
