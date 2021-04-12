@@ -57,7 +57,7 @@ const OrderListCard = ({ d }: { d: orderTrack }) => {
         <div className="flex justify-end">
           <StyledButton
             text="See More"
-            onClick={() => router.push(`${router.asPath}/${d._id}`)}
+            onClick={() => router.push(`/me/order/${d._id}`)}
           />
         </div>
       </BodyContainer>
