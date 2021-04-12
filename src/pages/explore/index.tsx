@@ -47,7 +47,11 @@ const ExplorePage = ({ temple }: { temple: templeInterface[] }) => {
 
   return (
     <Layout title="Explore" nav>
-      <div className={`relative h-full`}>
+      <div
+        className={`relative ${
+          explorePage === 'map' ? `h-screen w-screen` : `h-full`
+        }`}
+      >
         <div
           className={`absolute z-50 right-5 top-5 rounded-full ${
             explorePage === 'list'
