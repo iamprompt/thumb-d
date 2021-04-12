@@ -4,7 +4,6 @@ import nookies from 'nookies'
 
 import Layout from '@/layouts'
 
-// import BackButton from '@/components/Navigation/BackButton'
 import OrderListCard from '@/components/Order/OrderListCard'
 
 import { orderTrack } from '~@types/order'
@@ -24,9 +23,8 @@ const OrderStatus = ({ order }: { order: orderTrack[] }) => {
   }, [user, loading])
   return (
     <Layout nav>
-      <div className="min-h-screen p-5 pb-24">
-        {/* <BackButton /> */}
-        <div className="mb-10 text-center mt-14">
+      <div className="p-5 min-h-screen pb-24">
+        <div className="mt-14 mb-10 text-center">
           <div className="text-4xl font-bold">Order Status</div>
         </div>
         <div className="max-w-xl grid-cols-1 mx-auto space-y-5">

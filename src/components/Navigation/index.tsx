@@ -9,8 +9,8 @@ const NavItem = tw.div`flex flex-col items-center justify-center p-3 cursor-poin
 
 const NavItems = [
   { title: 'Feed', href: '/', icon: 'article' },
-  { title: 'Explore', href: '/explore', icon: 'search' },
-  { title: 'Profile', href: '/me', icon: 'shopping_bag' },
+  { title: 'Explore', href: '/explore', icon: 'travel_explore' },
+  { title: 'Order', href: '/me', icon: 'shopping_bag' },
 ]
 
 export const FooterNav = () => {
