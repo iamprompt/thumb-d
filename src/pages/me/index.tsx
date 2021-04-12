@@ -24,7 +24,7 @@ const OrderStatus = ({ order }: { order: orderTrack[] }) => {
   }, [user, loading])
   return (
     <Layout nav>
-      <div className="p-5 min-h-screen">
+      <div className="p-5 min-h-screen pb-24">
         <BackButton />
         <div className="mt-14 mb-10 text-center">
           <div className="text-4xl font-bold">Order Status</div>

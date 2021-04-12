@@ -47,7 +47,7 @@ const ExplorePage = ({ temple }: { temple: templeInterface[] }) => {
 
   return (
     <Layout title="Explore" nav>
-      <div className={`relative w-screen h-screen`}>
+      <div className={`relative h-full`}>
         <div
           className={`absolute z-50 right-5 top-5 rounded-full ${
             explorePage === 'list'
@@ -66,7 +66,7 @@ const ExplorePage = ({ temple }: { temple: templeInterface[] }) => {
         </div>
         {explorePage === 'map' && <Map d={temple} />}
         {explorePage === 'list' && (
-          <div className="px-5 pb-24 pt-20">
+          <div className="px-5 pb-24 pt-20 max-w-screen-sm mx-auto">
             <div className="text-center font-bold text-4xl mb-5">วัด</div>
             <SearchBox v={searchKw} setV={setSearchKw} placeHolder="หาอะไรดี" />
             <div className="space-y-5 mt-3">

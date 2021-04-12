@@ -9,7 +9,7 @@ import { dayjs } from '@/utils'
 const PostCard = ({ d }: { d: postInterface }) => (
   <div className="flex flex-col bg-white shadow-xl rounded-lg mt-5">
     <div className="flex flex-row items-center pt-4 px-4 space-x-4">
-      <div className="mr-4 w-12 h-12">
+      <div className="mr-1 w-12 h-12">
         <Image
           src={d.author.imgUrl}
           width={100}
