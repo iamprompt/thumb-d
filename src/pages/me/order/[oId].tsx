@@ -55,6 +55,7 @@ const OrderStatusDetail = ({ order }: { order: orderTrack }) => {
               {`${dayjs.unix(order.createdAt._seconds).format('hh:mm A')}`}
             </div>
           </div>
+        </div>
 
         <div>
           <div className="p-5 border-b">
@@ -79,7 +80,7 @@ const OrderStatusDetail = ({ order }: { order: orderTrack }) => {
                 {numeral(total).format('0,0.00')} {' Baht'}
               </div>
             </div>
-
+          </div>
 
           <div className="p-5 border-b">
             <h1 className="font-sans text-xl font-bold text-center">Status</h1>
@@ -104,9 +105,9 @@ const OrderStatusDetail = ({ order }: { order: orderTrack }) => {
                           .format('DD MMMM YYYY hh:mm A')}
                       </div>
                     </div>
-                  )
-                })}
-              </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
